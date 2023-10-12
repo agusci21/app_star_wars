@@ -7,7 +7,9 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+        splashColor: const Color(0xffffe919),
+      ),
       debugShowCheckedModeBanner: false,
       routes: _generateRoutes(),
       initialRoute: CharacterListModule.listOfCharactersPage,
