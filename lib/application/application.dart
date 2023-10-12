@@ -7,6 +7,7 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       routes: _generateRoutes(),
       initialRoute: CharacterListModule.listOfCharactersPage,

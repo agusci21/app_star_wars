@@ -1,17 +1,32 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class Character {
+  final String birthYear;
+  final String eyeColor;
+  final String gender;
+  final String hairColor;
+  final String height;
+  final String homeworld;
+  final String mass;
+  final String name;
 
-part 'character.freezed.dart';
+  const Character({
+    required this.birthYear,
+    required this.eyeColor,
+    required this.gender,
+    required this.hairColor,
+    required this.height,
+    required this.homeworld,
+    required this.mass,
+    required this.name,
+  });
 
-@freezed
-class Character with _$Character {
-  const factory Character({
-    required String birthYear,
-    required String eyeColor,
-    required String gender,
-    required String hairColor,
-    required String height,
-    required String homeworld,
-    required String mass,
-    required String name,
-  }) = _Character;
+  factory Character.fromJson(Map<String, dynamic> json) => Character(
+        birthYear: json['birth_year'],
+        eyeColor: json['eye_color'],
+        gender: json['gender'],
+        hairColor: json['hair_color'],
+        height: json['height'],
+        homeworld: json['homeworld'],
+        mass: json['mass'],
+        name: json['name'],
+      );
 }
