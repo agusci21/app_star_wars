@@ -1,6 +1,7 @@
 import 'package:desafio_flutter_urbetrack/application/localizations/i18n.dart';
 import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
 import 'package:desafio_flutter_urbetrack/core/helpers/gender_helper.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/starships_list/presentation/starships_list.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/vehicles_list/presentation/vehicles_list_component.dart';
 import 'package:flutter/material.dart';
 
@@ -15,39 +16,39 @@ class AtributeList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _AtributeText(atribute: character.name, translationKey: 'name'),
-          _AtributeText(
-              atribute: character.eyeColor, translationKey: 'eye_color'),
-          _AtributeText(
-              atribute: character.birthYear, translationKey: 'birth_year'),
-          _AtributeText(
-              atribute:
-                  GenderHelper.getTranslatedGender(context, character.gender),
-              translationKey: 'gender'),
-          _AtributeText(
-            atribute: character.mass,
-            translationKey: 'mass',
-            secondTranslationKey: 'kilograms',
-          ),
-          _AtributeText(
-            atribute: character.height,
-            translationKey: 'height',
-            secondTranslationKey: 'centimeters',
-          ),
-          _AtributeText(
-            atribute: character.homeworldId,
-            translationKey: 'homeworld',
-          ),
-          _AtributeText(
-            atribute: character.starships.toString(),
-            translationKey: 'starships',
-          ),
-          if (character.vehicles.isNotEmpty)
-            VehiclesList(vehiclesIds: character.vehicles),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _AtributeText(atribute: character.name, translationKey: 'name'),
+            _AtributeText(
+                atribute: character.eyeColor, translationKey: 'eye_color'),
+            _AtributeText(
+                atribute: character.birthYear, translationKey: 'birth_year'),
+            _AtributeText(
+                atribute:
+                    GenderHelper.getTranslatedGender(context, character.gender),
+                translationKey: 'gender'),
+            _AtributeText(
+              atribute: character.mass,
+              translationKey: 'mass',
+              secondTranslationKey: 'kilograms',
+            ),
+            _AtributeText(
+              atribute: character.height,
+              translationKey: 'height',
+              secondTranslationKey: 'centimeters',
+            ),
+            _AtributeText(
+              atribute: character.homeworldId,
+              translationKey: 'homeworld',
+            ),
+            if (character.starships.isNotEmpty)
+              StarshipsList(starshipsIds: character.starships),
+            if (character.vehicles.isNotEmpty)
+              VehiclesList(vehiclesIds: character.vehicles),
+          ],
+        ),
       ),
     );
   }

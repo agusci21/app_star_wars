@@ -1,7 +1,10 @@
 import 'package:desafio_flutter_urbetrack/abstractions/navigation_helper.dart';
 import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/data/repositories/starship_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/data/repositories/vehicle_repository.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/domain/repositories/i_starships_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/character_list_component/bloc/character_list_bloc.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/starship_card/bloc/starship_card_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/pages/characters_detail_page.dart';
 import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
 import 'package:desafio_flutter_urbetrack/abstractions/injector.dart';
@@ -16,25 +19,50 @@ abstract class CharacterListModule {
   static const listOfCharactersPage = '/list-of-characters';
   static const characterDetailsPage = '/character-detail-page';
   static void registerDependencies(Injector injector) {
-    injector.registerFactory<ICharacterRepository>(
-      () => CharacterRepository(
-        baseUrl: injector.resolveByName<String>('baseUrl'),
-        httpHelper: injector.resolve<HttpHelper>(),
+    _registerRepositories(injector);
+    _registerBlocs(injector);
+  }
+
+  static void _registerRepositories(Injector injector) {
+    final String baseUrl = injector.resolveByName<String>('baseUrl');
+    final HttpHelper httpHelper = injector.resolve<HttpHelper>();
+    injector.registerFactory<IVehicleRepository>(
+      () => VehicleRepository(
+        baseUrl: baseUrl,
+        httpHelper: httpHelper,
       ),
     );
+
+    injector.registerFactory<ICharacterRepository>(
+      () => CharacterRepository(
+        baseUrl: baseUrl,
+        httpHelper: httpHelper,
+      ),
+    );
+
+    injector.registerFactory<IStarshipRepository>(
+      () => StarshipRepository(baseUrl: baseUrl, httpHelper: httpHelper),
+    );
+  }
+
+  static void _registerBlocs(Injector injector) {
     injector.registerFactory<CharacterListBloc>(
       () => CharacterListBloc(
         repository: injector.resolve<ICharacterRepository>(),
       ),
     );
-    injector.registerFactory<IVehicleRepository>(
-      () => VehicleRepository(
-        baseUrl: injector.resolveByName<String>('baseUrl'),
-        httpHelper: injector.resolve<HttpHelper>(),
+
+    injector.registerFactory<VehicleCardBloc>(
+      () => VehicleCardBloc(
+        repository: injector.resolve<IVehicleRepository>(),
       ),
     );
-    injector.registerFactory<VehicleCardBloc>(() =>
-        VehicleCardBloc(repository: injector.resolve<IVehicleRepository>()));
+
+    injector.registerFactory<StarshipCardBloc>(
+      () => StarshipCardBloc(
+        repository: injector.resolve<IStarshipRepository>(),
+      ),
+    );
   }
 
   static Map<String, Widget Function(BuildContext)> generateRoutes() => {

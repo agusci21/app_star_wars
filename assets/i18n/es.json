@@ -17,6 +17,8 @@
     "vehicles": "Vehiculos",
     "starships": "Naves estelares",
     "vehicle_class": "Clase del Vehiculo",
+    "starship_class": "Clase de la nave estelar",
+    "starship_model" : "Modelo",
     "cost": "Costo en creditos",
     "manufacturer": "Productor"
 }
