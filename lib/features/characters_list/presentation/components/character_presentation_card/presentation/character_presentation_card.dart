@@ -1,5 +1,6 @@
 import 'package:desafio_flutter_urbetrack/application/localizations/i18n.dart';
 import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/character_list_module.dart';
 import 'package:flutter/material.dart';
 
 class CharacterPresentationCard extends StatelessWidget {
@@ -17,7 +18,10 @@ class CharacterPresentationCard extends StatelessWidget {
         leading: const Icon(Icons.person),
         title: Text(character.name),
         subtitle: Text(_getSubtitle(context, character.gender)),
-        onTap: () {},
+        onTap: () {
+          CharacterListModule.navigateToCharactersDetailsList(context,
+              character: character);
+        },
       ),
     );
   }

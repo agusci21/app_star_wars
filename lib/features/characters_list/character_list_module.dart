@@ -1,4 +1,5 @@
 import 'package:desafio_flutter_urbetrack/abstractions/navigation_helper.dart';
+import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/character_list_component/bloc/character_list_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/pages/characters_detail_page.dart';
 import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
@@ -18,15 +19,20 @@ abstract class CharacterListModule {
         httpHelper: injector.resolve<HttpHelper>(),
       ),
     );
-    injector.registerFactory<CharacterListBloc>(() => CharacterListBloc(
-        repository: injector.resolve<ICharacterRepository>()));
+    injector.registerFactory<CharacterListBloc>(
+      () => CharacterListBloc(
+        repository: injector.resolve<ICharacterRepository>(),
+      ),
+    );
   }
 
   static Map<String, Widget Function(BuildContext)> generateRoutes() => {
         listOfCharactersPage: (context) => const CharacterListPage(),
         characterDetailsPage: (context) => const CharacterDetailPage()
       };
-  static void navigateToCharactersDetailsList (BuildContext context) {
-    NavigationHelper.of(context).pushNamed(characterDetailsPage);
+  static void navigateToCharactersDetailsList(BuildContext context,
+      {required Character character}) {
+    NavigationHelper.of(context)
+        .pushNamed(characterDetailsPage, arguments: character);
   }
 }

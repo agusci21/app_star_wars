@@ -1,10 +1,12 @@
+import 'package:desafio_flutter_urbetrack/core/helpers/string_helpers.dart';
+
 class Character {
   final String birthYear;
   final String eyeColor;
   final String gender;
   final String hairColor;
   final String height;
-  final String homeworld;
+  final String homeworldId;
   final String mass;
   final String name;
 
@@ -14,7 +16,7 @@ class Character {
     required this.gender,
     required this.hairColor,
     required this.height,
-    required this.homeworld,
+    required this.homeworldId,
     required this.mass,
     required this.name,
   });
@@ -25,7 +27,7 @@ class Character {
         gender: json['gender'],
         hairColor: json['hair_color'],
         height: json['height'],
-        homeworld: json['homeworld'],
+        homeworldId: (json['homeworld'] as String).getIdFromPlanetUrl() ?? '',
         mass: json['mass'],
         name: json['name'],
       );
