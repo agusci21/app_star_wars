@@ -7,4 +7,5 @@ abstract class EnvironmentConfig {
     await dotenv.load();
   }
   static String get baseUrl => dotenv.env['BASE_URL'] ?? '';
+  static String get defaultLanguage => dotenv.env['DEFAULT_LANGUAGE'] ?? '';
 }

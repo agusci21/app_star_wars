@@ -1,0 +1,7 @@
+{
+    "star_wars_characters" : "Personajes de Star Wars",
+    "gender" : "Género",
+    "male" : "Masculino",
+    "female" : "Femenino",
+    "other_gender": "Otro"
+}
