@@ -45,7 +45,8 @@ class AtributeList extends StatelessWidget {
             atribute: character.starships.toString(),
             translationKey: 'starships',
           ),
-          VehiclesList(vehiclesIds: character.vehicles),
+          if (character.vehicles.isNotEmpty)
+            VehiclesList(vehiclesIds: character.vehicles),
         ],
       ),
     );

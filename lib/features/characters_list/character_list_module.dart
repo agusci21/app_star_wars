@@ -1,5 +1,6 @@
 import 'package:desafio_flutter_urbetrack/abstractions/navigation_helper.dart';
 import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/data/repositories/vehicle_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/character_list_component/bloc/character_list_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/pages/characters_detail_page.dart';
 import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
@@ -7,6 +8,7 @@ import 'package:desafio_flutter_urbetrack/abstractions/injector.dart';
 import 'package:flutter/material.dart';
 import 'data/repositories/character_repository.dart';
 import 'domain/repositories/i_characters_repository.dart';
+import 'domain/repositories/i_vehicle_repository.dart';
 import 'presentation/components/vehicle_card/bloc/vehicle_card_bloc.dart';
 import 'presentation/pages/characters_list_page.dart';
 
@@ -25,7 +27,14 @@ abstract class CharacterListModule {
         repository: injector.resolve<ICharacterRepository>(),
       ),
     );
-    injector.registerFactory<VehicleCardBloc>(() => VehicleCardBloc());
+    injector.registerFactory<IVehicleRepository>(
+      () => VehicleRepository(
+        baseUrl: injector.resolveByName<String>('baseUrl'),
+        httpHelper: injector.resolve<HttpHelper>(),
+      ),
+    );
+    injector.registerFactory<VehicleCardBloc>(() =>
+        VehicleCardBloc(repository: injector.resolve<IVehicleRepository>()));
   }
 
   static Map<String, Widget Function(BuildContext)> generateRoutes() => {
