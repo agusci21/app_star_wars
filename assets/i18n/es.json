@@ -4,5 +4,17 @@
     "male" : "Masculino",
     "female" : "Femenino",
     "other_gender": "Otro",
-    "character_details": "Detalles del personaje"
+    "character_details": "Detalles del personaje",
+    "name": "Nombre",
+    "birth_year": "Año de nacimiento",
+    "eye_color": "Color de ojos",
+    "hair_color" : "Color de pelo",
+    "height" : "Altura",
+    "mass": "Masa",
+    "centimeters": "Centimetros (cm)",
+    "kilograms": "Kilogramos (kg)",
+    "homeworld": "Planeta natal",
+    "vehicles": "Vehiculos",
+    "starships": "Naves estelares"
+
 }
