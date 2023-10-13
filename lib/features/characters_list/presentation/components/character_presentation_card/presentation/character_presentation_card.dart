@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 
 class CharacterPresentationCard extends StatelessWidget {
   final Character character;
-  const CharacterPresentationCard({required this.character, super.key});
+  const CharacterPresentationCard({
+    required this.character,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

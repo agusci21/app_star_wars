@@ -3,5 +3,6 @@
     "gender" : "Género",
     "male" : "Masculino",
     "female" : "Femenino",
-    "other_gender": "Otro"
+    "other_gender": "Otro",
+    "character_details": "Detalles del personaje"
 }

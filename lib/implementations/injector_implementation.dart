@@ -1,4 +1,4 @@
-import 'package:desafio_flutter_urbetrack/ioc/injector/injector.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/injector.dart';
 import 'package:get_it/get_it.dart';
 
 class InjectorImplementation implements Injector {

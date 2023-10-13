@@ -1,4 +1,4 @@
-import 'package:desafio_flutter_urbetrack/helpers/abstractions/http_helper.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
 import 'package:dio/dio.dart';
 
 class HttpHelperImplementation implements HttpHelper {

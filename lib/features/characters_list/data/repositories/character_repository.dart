@@ -2,7 +2,7 @@ import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/inputs_outputs/get_characters/get_character_input.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/inputs_outputs/get_characters/get_characters_output.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/repositories/i_characters_repository.dart';
-import 'package:desafio_flutter_urbetrack/helpers/abstractions/http_helper.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
 
 class CharacterRepository implements ICharacterRepository {
   final String _baseUrl;
