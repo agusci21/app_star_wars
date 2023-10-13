@@ -7,6 +7,7 @@ import 'package:desafio_flutter_urbetrack/abstractions/injector.dart';
 import 'package:flutter/material.dart';
 import 'data/repositories/character_repository.dart';
 import 'domain/repositories/i_characters_repository.dart';
+import 'presentation/components/vehicle_card/bloc/vehicle_card_bloc.dart';
 import 'presentation/pages/characters_list_page.dart';
 
 abstract class CharacterListModule {
@@ -24,6 +25,7 @@ abstract class CharacterListModule {
         repository: injector.resolve<ICharacterRepository>(),
       ),
     );
+    injector.registerFactory<VehicleCardBloc>(() => VehicleCardBloc());
   }
 
   static Map<String, Widget Function(BuildContext)> generateRoutes() => {
