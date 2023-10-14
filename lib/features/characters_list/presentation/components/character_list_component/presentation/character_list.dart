@@ -19,8 +19,14 @@ class CharacterList extends StatelessWidget {
             child: ListView.builder(
               padding: const EdgeInsets.all(10),
               itemCount: state.characters.length,
-              itemBuilder: (context, index) =>
-                  CharacterPresentationCard(character: state.characters[index]),
+              itemBuilder: (context, index) {
+                final lenght = state.characters.length;
+                if (lenght - index == 3) {
+                  bloc.add(LoadMoreCharacters());
+                }
+                return CharacterPresentationCard(
+                    character: state.characters[index]);
+              },
             ),
           );
         }
