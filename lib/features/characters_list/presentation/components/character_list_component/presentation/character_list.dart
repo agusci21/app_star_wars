@@ -25,7 +25,8 @@ class CharacterList extends StatelessWidget {
                   bloc.add(LoadMoreCharacters());
                 }
                 return CharacterPresentationCard(
-                    character: state.characters[index]);
+                  character: state.characters[index],
+                );
               },
             ),
           );
