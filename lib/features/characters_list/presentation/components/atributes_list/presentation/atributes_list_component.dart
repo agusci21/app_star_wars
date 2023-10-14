@@ -1,8 +1,11 @@
 import 'package:desafio_flutter_urbetrack/application/localizations/i18n.dart';
 import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
 import 'package:desafio_flutter_urbetrack/core/helpers/gender_helper.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/planet_card/bloc/planet_card_bloc.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/planet_card/presentation/planet_card.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/starships_list/presentation/starships_list.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/vehicles_list/presentation/vehicles_list_component.dart';
+import 'package:desafio_flutter_urbetrack/infrastructure/ioc_manager.dart';
 import 'package:flutter/material.dart';
 
 class AtributeList extends StatelessWidget {
@@ -39,10 +42,9 @@ class AtributeList extends StatelessWidget {
               translationKey: 'height',
               secondTranslationKey: 'centimeters',
             ),
-            _AtributeText(
-              atribute: character.homeworldId,
-              translationKey: 'homeworld',
-            ),
+            PlanetCard(
+                planetId: character.homeworldId,
+                bloc: IocManager.instance.resolve<PlanetCardBloc>()),
             if (character.starships.isNotEmpty)
               StarshipsList(starshipsIds: character.starships),
             if (character.vehicles.isNotEmpty)

@@ -1,9 +1,12 @@
 import 'package:desafio_flutter_urbetrack/abstractions/navigation_helper.dart';
 import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/data/repositories/planets_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/data/repositories/starship_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/data/repositories/vehicle_repository.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/domain/repositories/i_planets_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/repositories/i_starships_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/character_list_component/bloc/character_list_bloc.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/planet_card/bloc/planet_card_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/starship_card/bloc/starship_card_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/pages/characters_detail_page.dart';
 import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
@@ -41,7 +44,17 @@ abstract class CharacterListModule {
     );
 
     injector.registerFactory<IStarshipRepository>(
-      () => StarshipRepository(baseUrl: baseUrl, httpHelper: httpHelper),
+      () => StarshipRepository(
+        baseUrl: baseUrl,
+        httpHelper: httpHelper,
+      ),
+    );
+
+    injector.registerFactory<IPlanetsRepository>(
+      () => PlanetsRepository(
+        baseUrl: baseUrl,
+        httpHelper: httpHelper,
+      ),
     );
   }
 
@@ -63,6 +76,9 @@ abstract class CharacterListModule {
         repository: injector.resolve<IStarshipRepository>(),
       ),
     );
+    injector.registerFactory<PlanetCardBloc>(() => PlanetCardBloc(
+      repository: injector.resolve<IPlanetsRepository >()
+    ));
   }
 
   static Map<String, Widget Function(BuildContext)> generateRoutes() => {

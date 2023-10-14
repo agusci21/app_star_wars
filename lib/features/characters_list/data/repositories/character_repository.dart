@@ -32,5 +32,3 @@ class CharacterRepository implements ICharacterRepository {
     }
   }
 }
-//https://swapi.dev/api/people/?page=3
-//https://swapi.dev/api/people/?page=0
