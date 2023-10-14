@@ -30,6 +30,23 @@ class CharacterList extends StatelessWidget {
             ),
           );
         }
+        if (state is LoadingMore) {
+          return SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: ListView.builder(
+              padding: const EdgeInsets.all(10),
+              itemCount: state.characters.length,
+              itemBuilder: (context, index) {
+                if (state.characters.length - index == 1) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                return CharacterPresentationCard(
+                    character: state.characters[index]);
+              },
+            ),
+          );
+        }
         return const Center(
           child: CircularProgressIndicator(),
         );

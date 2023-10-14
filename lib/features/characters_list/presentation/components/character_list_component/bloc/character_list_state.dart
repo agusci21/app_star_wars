@@ -15,4 +15,11 @@ class Loaded extends CharacterListState {
   });
 }
 
+class LoadingMore extends CharacterListState {
+  final List<Character> characters;
+  LoadingMore({
+    required this.characters,
+  });
+}
+
 class Failed extends CharacterListState {}

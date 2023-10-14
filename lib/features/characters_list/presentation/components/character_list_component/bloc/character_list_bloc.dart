@@ -34,6 +34,7 @@ class CharacterListBloc extends Bloc<CharacterListEvent, CharacterListState> {
       if (!previousState.hasNextPage) {
         return;
       }
+      emit(LoadingMore(characters: previousState.characters));
       final input = GetCharactersInput(page: _page + 1);
       final output = await _repository.getCharacters(input);
       if (output.hasError) {
