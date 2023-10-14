@@ -5,7 +5,6 @@ class PersistentStorageImplementation implements PersistentStorage {
   @override
   Future<void> init() async {
     await Hive.initFlutter();
-    
   }
   
   @override

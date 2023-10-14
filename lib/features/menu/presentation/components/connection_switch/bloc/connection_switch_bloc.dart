@@ -1,15 +1,16 @@
-import 'package:desafio_flutter_urbetrack/infrastructure/persistent_storage_helper.dart';
+import 'package:desafio_flutter_urbetrack/features/menu/domain/input_output/set_connection/set_connection_input.dart';
+import 'package:desafio_flutter_urbetrack/features/menu/domain/repositories/i_connection_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'connection_switch_event.dart';
 part 'connection_switch_state.dart';
 
-class ConnectionSwitchBloc
-    extends Bloc<ConnectionSwitchEvent, ConnectionSwitchState> {
-  ConnectionSwitchBloc() : super(Initial()) {
+class ConnectionSwitchBloc extends Bloc<ConnectionSwitchEvent, ConnectionSwitchState> {
+      final IConnectionRepository _repository;
+  ConnectionSwitchBloc({required IConnectionRepository repository}) : _repository = repository, super(Initial()) {
     on<LoadConnection>((event, emit) async {
-      final isEnabled = await PersistentStorageHelper.instance.getBool('is_connected');
-      emit(Loaded(isEnabled: isEnabled ?? false));
+      final output = await _repository.getConnection();
+      emit(Loaded(isEnabled: output.isConnected));
     });
 
     on<ToggleConnection>((event, emit) async {
@@ -18,7 +19,8 @@ class ConnectionSwitchBloc
         emit(
           Loaded(isEnabled: !isEnabled),
         );
-        await PersistentStorageHelper.instance.setBool('is_connected', !isEnabled);
+        final input = SetConnectionInput(value: !isEnabled);
+        await _repository.setConnection(input);
       }
     });
   }
