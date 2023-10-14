@@ -24,5 +24,8 @@
     "rotation_period": "Periodo de rotación",
     "orbital_period" : "Periodo orbital",
     "population" : "Población",
-    "surface_water" : "Superficie cubierta de agua"
+    "surface_water" : "Superficie cubierta de agua",
+    "menu": "Menú",
+    "activate_connection"    : "Activa la conección",
+    "desactivate_connection" : "Desactiva la conneción"
 }

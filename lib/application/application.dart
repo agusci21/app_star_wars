@@ -1,5 +1,6 @@
 import 'package:desafio_flutter_urbetrack/application/localizations/locales.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/character_list_module.dart';
+import 'package:desafio_flutter_urbetrack/features/menu/menu_module.dart';
 import 'package:flutter/material.dart';
 
 import 'localizations/i18n.dart';
@@ -16,14 +17,13 @@ class Application extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: _generateRoutes(),
       initialRoute: CharacterListModule.listOfCharactersPage,
-      localizationsDelegates: const [
-       AppLocalizationsDelegate()
-      ],
+      localizationsDelegates: const [AppLocalizationsDelegate()],
       supportedLocales: Locales.suportedLanguages,
     );
   }
 
   Map<String, Widget Function(BuildContext)> _generateRoutes() => {
         ...CharacterListModule.generateRoutes(),
+        ...MenuModule.generateRoutes(),
       };
 }

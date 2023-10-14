@@ -11,6 +11,7 @@ import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/pages/characters_detail_page.dart';
 import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
 import 'package:desafio_flutter_urbetrack/abstractions/injector.dart';
+import 'package:desafio_flutter_urbetrack/features/menu/menu_module.dart';
 import 'package:flutter/material.dart';
 import 'data/repositories/character_repository.dart';
 import 'domain/repositories/i_characters_repository.dart';
@@ -76,9 +77,8 @@ abstract class CharacterListModule {
         repository: injector.resolve<IStarshipRepository>(),
       ),
     );
-    injector.registerFactory<PlanetCardBloc>(() => PlanetCardBloc(
-      repository: injector.resolve<IPlanetsRepository >()
-    ));
+    injector.registerFactory<PlanetCardBloc>(() =>
+        PlanetCardBloc(repository: injector.resolve<IPlanetsRepository>()));
   }
 
   static Map<String, Widget Function(BuildContext)> generateRoutes() => {
@@ -89,5 +89,9 @@ abstract class CharacterListModule {
       {required Character character}) {
     NavigationHelper.of(context)
         .pushNamed(characterDetailsPage, arguments: character);
+  }
+
+  static void navigateToMenu(BuildContext context) {
+    NavigationHelper.of(context).pushNamed(MenuModule.menuPage);
   }
 }
