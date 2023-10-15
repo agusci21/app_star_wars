@@ -8,14 +8,11 @@ import 'package:mockito/mockito.dart';
 import '../../../../common_mocks/common_mocks.mocks.dart';
 void main() async {
   await EnvironmentConfig.init();
-  late final MockIHttpHelper mockHttpHelper;
-  late final CharacterRepository repository;
-  setUp(() {
-    mockHttpHelper = MockIHttpHelper();
-    repository = CharacterRepository(
+   final MockIHttpHelper mockHttpHelper = MockIHttpHelper();
+   final CharacterRepository repository = CharacterRepository(
         baseUrl: 'https://some_test_url', httpHelper: mockHttpHelper);
-  });
   group('Will test character repository at getting data ', () {
+
     final input = GetCharactersInput(page: 1);
     test('Will test a successful petition, should answer an output with data',
         () async {
