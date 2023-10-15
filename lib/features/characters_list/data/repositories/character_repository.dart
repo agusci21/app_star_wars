@@ -26,9 +26,9 @@ class CharacterRepository implements ICharacterRepository {
         return GetCharactersOutput.withData(
             characters: characters, hasNextPage: response.data['next'] != null);
       }
-      return GetCharactersOutput.withError(error: 'characters_not_founded');
+      return GetCharactersOutput.withError('characters_not_founded');
     } catch (_) {
-      return GetCharactersOutput.withError(error: 'generic_error_message');
+      return GetCharactersOutput.withError('generic_error_message');
     }
   }
 }

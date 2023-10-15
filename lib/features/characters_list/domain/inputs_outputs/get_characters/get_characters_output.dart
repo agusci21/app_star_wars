@@ -16,7 +16,7 @@ class GetCharactersOutput {
   factory GetCharactersOutput.withData({required bool hasNextPage, required List<Character> characters}) 
     => GetCharactersOutput._(hasNextPage: hasNextPage, characters:characters);
 
-  factory GetCharactersOutput.withError({required String error}) 
+  factory GetCharactersOutput.withError(String error) 
     => GetCharactersOutput._(error: error);
 
   bool get hasError => error != null;
