@@ -1,3 +1,4 @@
+import 'package:desafio_flutter_urbetrack/core/widgets/dfu_millennium_falcon_loading_indicator.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/character_list_component/bloc/character_list_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/character_presentation_card/presentation/character_presentation_card.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class CharacterList extends StatelessWidget {
               itemCount: state.characters.length,
               itemBuilder: (context, index) {
                 if (state.characters.length - index == 1) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(child: DFUMillenniumFalcon());
                 }
                 return CharacterPresentationCard(
                     character: state.characters[index]);
@@ -49,7 +50,7 @@ class CharacterList extends StatelessWidget {
           );
         }
         return const Center(
-          child: CircularProgressIndicator(),
+          child: DFUMillenniumFalcon(),
         );
       },
     );

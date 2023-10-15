@@ -1,5 +1,6 @@
 import 'package:desafio_flutter_urbetrack/application/localizations/i18n.dart';
 import 'package:desafio_flutter_urbetrack/core/widgets/dfu_expansion_panel.dart';
+import 'package:desafio_flutter_urbetrack/core/widgets/dfu_millennium_falcon_loading_indicator.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/planet_card/bloc/planet_card_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,7 +52,7 @@ class PlanetCard extends StatelessWidget {
                   ]);
             }
             return const Center(
-              child: CircularProgressIndicator(),
+              child: DFUMillenniumFalcon(),
             );
           },
         ),
