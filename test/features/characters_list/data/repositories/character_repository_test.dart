@@ -3,12 +3,9 @@ import 'package:desafio_flutter_urbetrack/features/characters_list/data/reposito
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/inputs_outputs/get_characters/get_character_input.dart';
 import 'package:desafio_flutter_urbetrack/infrastructure/environments_confi.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'character_repository_test.mocks.dart';
-
-@GenerateMocks([IHttpHelper])
+import 'common_mocks/common_mocks.mocks.dart';
 void main() async {
   await EnvironmentConfig.init();
   late final MockIHttpHelper mockHttpHelper;
