@@ -1,4 +1,4 @@
-import 'package:desafio_flutter_urbetrack/abstractions/navigation_helper.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/i_navigation.dart';
 import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/data/repositories/planets_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/data/repositories/starship_repository.dart';
@@ -12,6 +12,7 @@ import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/
 import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
 import 'package:desafio_flutter_urbetrack/abstractions/injector.dart';
 import 'package:desafio_flutter_urbetrack/features/menu/menu_module.dart';
+import 'package:desafio_flutter_urbetrack/infrastructure/ioc_manager.dart';
 import 'package:flutter/material.dart';
 import 'data/repositories/character_repository.dart';
 import 'domain/repositories/i_characters_repository.dart';
@@ -85,13 +86,17 @@ abstract class CharacterListModule {
         listOfCharactersPage: (context) => const CharacterListPage(),
         characterDetailsPage: (context) => const CharacterDetailPage()
       };
+
   static void navigateToCharactersDetailsList(BuildContext context,
       {required Character character}) {
-    NavigationHelper.of(context)
-        .pushNamed(characterDetailsPage, arguments: character);
+    IocManager.instance
+        .resolve<INavigation>()
+        .pushNamed(context, characterDetailsPage, arguments: character);
   }
 
   static void navigateToMenu(BuildContext context) {
-    NavigationHelper.of(context).pushNamed(MenuModule.menuPage);
+    IocManager.instance
+        .resolve<INavigation>()
+        .pushNamed(context, MenuModule.menuPage);
   }
 }

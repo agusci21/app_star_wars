@@ -1,9 +1,9 @@
 
 import 'package:desafio_flutter_urbetrack/abstractions/persistent_storage.dart';
-import 'package:desafio_flutter_urbetrack/features/menu/domain/input_output/get_connection/get_connection_output.dart';
-import 'package:desafio_flutter_urbetrack/features/menu/domain/input_output/set_connection/set_connection_input.dart';
-import 'package:desafio_flutter_urbetrack/features/menu/domain/input_output/set_connection/set_connection_output.dart';
-import 'package:desafio_flutter_urbetrack/features/menu/domain/repositories/i_connection_repository.dart';
+import 'package:desafio_flutter_urbetrack/core/common_repositories/domain/input_output/get_connection/get_connection_output.dart';
+import 'package:desafio_flutter_urbetrack/core/common_repositories/domain/input_output/set_connection/set_connection_input.dart';
+import 'package:desafio_flutter_urbetrack/core/common_repositories/domain/input_output/set_connection/set_connection_output.dart';
+import 'package:desafio_flutter_urbetrack/core/common_repositories/domain/repositories/i_connection_repository.dart';
 
 class ConnectionRepository implements IConnectionRepository{
   final PersistentStorage _persistentStorage;
