@@ -8,4 +8,5 @@ abstract class EnvironmentConfig {
   }
   static String get baseUrl => dotenv.env['BASE_URL'] ?? '';
   static String get defaultLanguage => dotenv.env['DEFAULT_LANGUAGE'] ?? '';
+  static String get reportCharacterUrl => dotenv.env['REPORT_CHARACTER_URL'] ?? '';
 }

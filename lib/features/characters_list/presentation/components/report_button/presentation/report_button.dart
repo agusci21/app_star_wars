@@ -19,6 +19,18 @@ class ReportButton extends StatelessWidget {
     return BlocConsumer<ReportButtonBloc, ReportButtonState>(
       bloc: bloc,
       listener: (context, state) {
+        if (state is CharacterReported) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.pink.shade900,
+              content: Text(
+                I18n.of(context).translate('character_reported') +
+                    character.name,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
+        }
         if (state is Failed) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

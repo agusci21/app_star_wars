@@ -26,7 +26,13 @@ abstract class IocManager {
 
   static void _registerCommonDependencies(IInjector injector) {
     injector.registerFactoryByName<String>(
-        () => EnvironmentConfig.baseUrl, 'baseUrl');
+      () => EnvironmentConfig.baseUrl,
+      'baseUrl',
+    );
+    injector.registerFactoryByName<String>(
+      () => EnvironmentConfig.reportCharacterUrl,
+      'reportCharacterUrl',
+    );
     injector.registerFactory<IHttpHelper>(
       () => HttpHelper(),
     );

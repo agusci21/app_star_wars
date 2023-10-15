@@ -5,6 +5,7 @@ import 'package:desafio_flutter_urbetrack/features/characters_list/data/reposito
 import 'package:desafio_flutter_urbetrack/features/characters_list/data/repositories/starship_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/data/repositories/vehicle_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/repositories/i_planets_repository.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/domain/repositories/i_report_character_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/repositories/i_starships_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/use_cases/abstractions/i_report_character_use_case.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/use_cases/implementations/report_character_use_case.dart';
@@ -19,6 +20,7 @@ import 'package:desafio_flutter_urbetrack/features/menu/menu_module.dart';
 import 'package:desafio_flutter_urbetrack/infrastructure/ioc_manager.dart';
 import 'package:flutter/material.dart';
 import 'data/repositories/character_repository.dart';
+import 'data/repositories/report_character_repository.dart';
 import 'domain/repositories/i_characters_repository.dart';
 import 'domain/repositories/i_vehicle_repository.dart';
 import 'presentation/components/vehicle_card/bloc/vehicle_card_bloc.dart';
@@ -63,11 +65,20 @@ abstract class CharacterListModule {
         httpHelper: httpHelper,
       ),
     );
+    injector.registerFactory<IReportCharacterRepository>(
+      () => ReportCharacterRepository(
+        httpHelper: httpHelper,
+        reportCharacterUrl:
+            injector.resolveByName<String>('reportCharacterUrl'),
+      ),
+    );
   }
 
   static void _registerUseCases(IInjector injector) {
     injector.registerFactory<IReportCharacterUseCase>(
       () => ReportCharacterUseCase(
+        reportCharacterRepository:
+            injector.resolve<IReportCharacterRepository>(),
         connectionRepository: injector.resolve<IConnectionRepository>(),
       ),
     );

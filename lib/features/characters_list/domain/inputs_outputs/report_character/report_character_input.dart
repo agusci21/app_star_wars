@@ -11,7 +11,7 @@ final class ReportCharacterInput {
 
   Map<String, dynamic> toJson() => {
         "userId": characterId,
-        "dateTime": reportedDate,
+        "dateTime": reportedDate.toString(),
         "character_name": characterName,
       };
 }
