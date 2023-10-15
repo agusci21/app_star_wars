@@ -20,9 +20,9 @@ class VehicleRepository implements IVehicleRepository {
       if (response.isOk) {
         return GetVehicleByIdOutput.withData(Vehicle.fromJson(response.data));
       }
-    } catch (_) {
       return GetVehicleByIdOutput.withError('vehicle_not_founded');
+    } catch (_) {
+      return GetVehicleByIdOutput.withError('generic_error_message');
     }
-    return GetVehicleByIdOutput.withError('generic_error_message');
   }
 }
