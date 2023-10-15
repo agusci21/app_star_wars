@@ -12,5 +12,5 @@ class GetVehicleByIdOutput {
       GetVehicleByIdOutput._(error: error);
   factory GetVehicleByIdOutput.withData(Vehicle vehicle) =>
       GetVehicleByIdOutput._(vehicle: vehicle);
-  bool get hasError => error != null && vehicle != null;
+  bool get hasError => error != null;
 }
