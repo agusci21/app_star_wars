@@ -1,15 +1,15 @@
-import 'package:desafio_flutter_urbetrack/abstractions/injector.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/i_injector.dart';
 import 'package:get_it/get_it.dart';
 
-class InjectorImplementation implements Injector {
-  static final InjectorImplementation _singleton = InjectorImplementation._internal();
+class Injector implements IInjector {
+  static final Injector _singleton = Injector._internal();
   final GetIt _getIt = GetIt.asNewInstance();
 
-  factory InjectorImplementation() {
+  factory Injector() {
     return _singleton;
   }
 
-  InjectorImplementation._internal();
+  Injector._internal();
 
   @override
   void registerFactory<T extends Object>(factoryFunc) {

@@ -1,7 +1,7 @@
-import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/i_http_helper.dart';
 import 'package:dio/dio.dart';
 
-class HttpHelperImplementation implements HttpHelper {
+class HttpHelper implements IHttpHelper {
   static Future<Dio> _buildDio() async {
     final dio = Dio();
     return dio;

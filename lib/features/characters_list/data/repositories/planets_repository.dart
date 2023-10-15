@@ -1,4 +1,4 @@
-import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/i_http_helper.dart';
 import 'package:desafio_flutter_urbetrack/core/entities/planet.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/inputs_outputs/get_planet_by_id/get_planet_by_id_input.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/inputs_outputs/get_planet_by_id/get_planet_by_id_output.dart';
@@ -6,9 +6,9 @@ import 'package:desafio_flutter_urbetrack/features/characters_list/domain/reposi
 
 class PlanetsRepository implements IPlanetsRepository {
   final String _baseUrl;
-  final HttpHelper _httpHelper;
+  final IHttpHelper _httpHelper;
   static const _endpoint = '/planets';
-  PlanetsRepository({required String baseUrl, required HttpHelper httpHelper})
+  PlanetsRepository({required String baseUrl, required IHttpHelper httpHelper})
       : _baseUrl = baseUrl,
         _httpHelper = httpHelper;
   @override

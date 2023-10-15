@@ -1,4 +1,4 @@
-import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/i_http_helper.dart';
 import 'package:desafio_flutter_urbetrack/core/entities/starship.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/inputs_outputs/get_starship_by_id/get_starship_by_id_input.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/inputs_outputs/get_starship_by_id/get_starship_by_id_output.dart';
@@ -6,11 +6,11 @@ import 'package:desafio_flutter_urbetrack/features/characters_list/domain/reposi
 
 class StarshipRepository implements IStarshipRepository {
   final String _baseUrl;
-  final HttpHelper _httpHelper;
+  final IHttpHelper _httpHelper;
   static const endpoint = 'starships';
   StarshipRepository({
     required String baseUrl,
-    required HttpHelper httpHelper,
+    required IHttpHelper httpHelper,
   })  : _baseUrl = baseUrl,
         _httpHelper = httpHelper;
   @override

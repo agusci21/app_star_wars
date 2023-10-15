@@ -9,8 +9,8 @@ import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/planet_card/bloc/planet_card_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/starship_card/bloc/starship_card_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/pages/characters_detail_page.dart';
-import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
-import 'package:desafio_flutter_urbetrack/abstractions/injector.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/i_http_helper.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/i_injector.dart';
 import 'package:desafio_flutter_urbetrack/features/menu/menu_module.dart';
 import 'package:desafio_flutter_urbetrack/infrastructure/ioc_manager.dart';
 import 'package:flutter/material.dart';
@@ -23,14 +23,14 @@ import 'presentation/pages/characters_list_page.dart';
 abstract class CharacterListModule {
   static const listOfCharactersPage = '/list-of-characters';
   static const characterDetailsPage = '/character-detail-page';
-  static void registerDependencies(Injector injector) {
+  static void registerDependencies(IInjector injector) {
     _registerRepositories(injector);
     _registerBlocs(injector);
   }
 
-  static void _registerRepositories(Injector injector) {
+  static void _registerRepositories(IInjector injector) {
     final String baseUrl = injector.resolveByName<String>('baseUrl');
-    final HttpHelper httpHelper = injector.resolve<HttpHelper>();
+    final IHttpHelper httpHelper = injector.resolve<IHttpHelper>();
     injector.registerFactory<IVehicleRepository>(
       () => VehicleRepository(
         baseUrl: baseUrl,
@@ -60,7 +60,7 @@ abstract class CharacterListModule {
     );
   }
 
-  static void _registerBlocs(Injector injector) {
+  static void _registerBlocs(IInjector injector) {
     injector.registerFactory<CharacterListBloc>(
       () => CharacterListBloc(
         repository: injector.resolve<ICharacterRepository>(),

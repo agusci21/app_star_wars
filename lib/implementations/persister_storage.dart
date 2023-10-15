@@ -1,12 +1,12 @@
-import 'package:desafio_flutter_urbetrack/abstractions/persistent_storage.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/i_persistent_storage.dart';
 import 'package:hive_flutter/adapters.dart';
 
-class PersistentStorageImplementation implements PersistentStorage {
+class PersistentStorage implements IPersistentStorage {
   @override
   Future<void> init() async {
     await Hive.initFlutter();
   }
-  
+
   @override
   Future<bool?> getBool(String key) async {
     final box = await Hive.openBox('data');

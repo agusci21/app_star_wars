@@ -1,4 +1,4 @@
-import 'package:desafio_flutter_urbetrack/abstractions/injector.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/i_injector.dart';
 import 'package:desafio_flutter_urbetrack/core/common_repositories/domain/repositories/i_connection_repository.dart';
 import 'package:desafio_flutter_urbetrack/features/menu/presentation/components/connection_switch/bloc/connection_switch_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/menu/presentation/pages/menu_page.dart';
@@ -10,11 +10,11 @@ abstract class MenuModule {
         menuPage: (context) => const MenuPage(),
       };
 
-  static void registerDependencies(Injector injector) {
+  static void registerDependencies(IInjector injector) {
     _registerBlocs(injector);
   }
 
-  static void _registerBlocs(Injector injector) {
+  static void _registerBlocs(IInjector injector) {
     injector.registerFactory<ConnectionSwitchBloc>(
       () => ConnectionSwitchBloc(
         repository: injector.resolve<IConnectionRepository>(),

@@ -2,15 +2,15 @@ import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/inputs_outputs/get_characters/get_character_input.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/inputs_outputs/get_characters/get_characters_output.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/repositories/i_characters_repository.dart';
-import 'package:desafio_flutter_urbetrack/abstractions/http_helper.dart';
+import 'package:desafio_flutter_urbetrack/abstractions/i_http_helper.dart';
 
 class CharacterRepository implements ICharacterRepository {
   final String _baseUrl;
-  final HttpHelper _httpHelper;
+  final IHttpHelper _httpHelper;
   static const _endpoint = 'people';
   const CharacterRepository({
     required String baseUrl,
-    required HttpHelper httpHelper,
+    required IHttpHelper httpHelper,
   })  : _baseUrl = baseUrl,
         _httpHelper = httpHelper;
   @override

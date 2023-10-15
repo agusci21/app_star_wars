@@ -1,4 +1,4 @@
-abstract class HttpHelper {
+abstract class IHttpHelper {
   Future<HttpResponse<T>> post<T>(
     String path, {
     data,

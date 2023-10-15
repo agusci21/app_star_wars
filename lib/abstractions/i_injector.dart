@@ -1,7 +1,7 @@
 typedef FactoryFunc<T> = T Function();
 
-abstract class Injector {
-  static Injector? instance;
+abstract class IInjector {
+  static IInjector? instance;
 
   void registerFactory<T extends Object>(FactoryFunc<T> factoryFunc);
 
@@ -16,7 +16,7 @@ abstract class Injector {
 
   bool isRegistered<T extends Object>();
 
-  static Injector register(Injector implementation) {
+  static IInjector register(IInjector implementation) {
     instance = implementation;
     return instance!;
   }
