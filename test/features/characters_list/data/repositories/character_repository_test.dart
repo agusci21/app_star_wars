@@ -5,7 +5,7 @@ import 'package:desafio_flutter_urbetrack/infrastructure/environments_confi.dart
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import 'common_mocks/common_mocks.mocks.dart';
+import '../../../../common_mocks/common_mocks.mocks.dart';
 void main() async {
   await EnvironmentConfig.init();
   late final MockIHttpHelper mockHttpHelper;
