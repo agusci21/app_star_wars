@@ -3,6 +3,8 @@ import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
 import 'package:desafio_flutter_urbetrack/core/helpers/gender_helper.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/planet_card/bloc/planet_card_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/planet_card/presentation/planet_card.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/report_button/bloc/report_button_bloc.dart';
+import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/report_button/presentation/report_button.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/starships_list/presentation/starships_list.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/vehicles_list/presentation/vehicles_list_component.dart';
 import 'package:desafio_flutter_urbetrack/infrastructure/ioc_manager.dart';
@@ -49,6 +51,10 @@ class AtributeList extends StatelessWidget {
               StarshipsList(starshipsIds: character.starships),
             if (character.vehicles.isNotEmpty)
               VehiclesList(vehiclesIds: character.vehicles),
+            ReportButton(
+              character: character,
+              bloc: IocManager.instance.resolve<ReportButtonBloc>(),
+            )
           ],
         ),
       ),

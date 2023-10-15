@@ -13,6 +13,12 @@ class Application extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
         splashColor: const Color(0xffffe919),
+        snackBarTheme: SnackBarThemeData(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          contentTextStyle: const TextStyle(color: Colors.white, fontSize: 16),
+          behavior: SnackBarBehavior.floating,
+        ),
       ),
       debugShowCheckedModeBanner: false,
       routes: _generateRoutes(),
