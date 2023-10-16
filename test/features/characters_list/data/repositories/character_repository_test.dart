@@ -13,7 +13,7 @@ void main() async {
         baseUrl: 'https://some_test_url', httpHelper: mockHttpHelper);
   group('Will test character repository at getting data ', () {
 
-    final input = GetCharactersInput(page: 1);
+    final input = GetCharactersInput(page: 1, searchField: '');
     test('Will test a successful petition, should answer an output with data',
         () async {
       final mockData = {

@@ -15,39 +15,67 @@ class CharacterListBloc extends Bloc<CharacterListEvent, CharacterListState> {
     on<LoadInitialList>((event, emit) async {
       emit(Loading());
       _page = 1;
-      final input = GetCharactersInput(page: 1);
+      final input = GetCharactersInput(page: 1, searchField: '');
       final output = await _repository.getCharacters(input);
       if (output.hasError) {
         emit(Failed());
         return;
       }
       emit(Loaded(
-          characters: output.characters!, hasNextPage: output.hasNextPage!));
+          characters: output.characters!,
+          hasNextPage: output.hasNextPage!,
+          isLoadingMore: false));
       return;
     });
 
-    on<LoadMoreCharacters>((event, emit) async {
-      if (state is! Loaded) {
-        return;
-      }
-      final previousState = state as Loaded;
-      if (!previousState.hasNextPage) {
-        return;
-      }
-      emit(LoadingMore(characters: previousState.characters));
-      final input = GetCharactersInput(page: _page + 1);
-      final output = await _repository.getCharacters(input);
-      if (output.hasError) {
-        emit(Failed());
-        return;
-      }
-      _page++;
-      emit(
-        Loaded(
-          characters: [...previousState.characters, ...output.characters!],
-          hasNextPage: output.hasNextPage!,
-        ),
-      );
-    });
+    on<LoadMoreCharacters>(
+      (event, emit) async {
+        if (state is! Loaded) {
+          return;
+        }
+        final previousState = state as Loaded;
+        if (!previousState.hasNextPage) {
+          return;
+        }
+        emit(Loaded(
+            characters: previousState.characters,
+            hasNextPage: previousState.hasNextPage,
+            isLoadingMore: true));
+        final input = GetCharactersInput(
+          page: _page + 1,
+          searchField: event.searchField,
+        );
+        final output = await _repository.getCharacters(input);
+        if (output.hasError) {
+          emit(Failed());
+          return;
+        }
+        _page++;
+        emit(
+          Loaded(
+            characters: [...previousState.characters, ...output.characters!],
+            hasNextPage: output.hasNextPage!,
+            isLoadingMore: false,
+          ),
+        );
+      },
+    );
+
+    on<Search>(
+      (event, emit) async {
+        _page = 1;
+        final input =
+            GetCharactersInput(page: _page, searchField: event.searchField);
+        final output = await _repository.getCharacters(input);
+        if (!output.hasError) {
+          emit(
+            Loaded(
+                characters: output.characters!,
+                hasNextPage: output.hasNextPage!,
+                isLoadingMore: false),
+          );
+        }
+      },
+    );
   }
 }

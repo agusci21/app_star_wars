@@ -107,12 +107,11 @@ void main() {
         },
         act: (bloc) {
           bloc.add(loadCharacterListEvent);
-          bloc.add(LoadMoreCharacters());
+          bloc.add(LoadMoreCharacters(searchField: ''));
         },
         expect: () => [
           isA<Loading>(),
           isA<Loaded>(),
-          isA<LoadingMore>(),
           isA<Loaded>(),
         ],
       );

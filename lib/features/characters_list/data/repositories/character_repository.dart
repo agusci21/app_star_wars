@@ -15,8 +15,10 @@ class CharacterRepository implements ICharacterRepository {
         _httpHelper = httpHelper;
   @override
   Future<GetCharactersOutput> getCharacters(GetCharactersInput input) async {
-    final url = '$_baseUrl$_endpoint/?page=${input.page}';
-
+    String url = '$_baseUrl$_endpoint/?page=${input.page}';
+    if (input.searchField.isNotEmpty) {
+      url += '&search=${input.searchField}';
+    }
     try {
       final response = await _httpHelper.get(url);
       if (response.isOk) {
