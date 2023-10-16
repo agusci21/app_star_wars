@@ -31,7 +31,8 @@ class CharacterList extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final lenght = state.characters.length;
                     if (lenght - index == 3 && !state.isLoadingMore) {
-                      bloc.add(LoadMoreCharacters(searchField: controller.text));
+                      bloc.add(
+                          LoadMoreCharacters(searchField: controller.text));
                     }
                     if (state.isLoadingMore && index == lenght - 1) {
                       return const Center(
@@ -47,8 +48,14 @@ class CharacterList extends StatelessWidget {
             ],
           );
         }
-        return const Center(
-          child: DFUMillenniumFalcon(),
+        return Column(
+          children: [
+            CustomSearchBar(
+                onFieldSubmitted: (value) {}, controller: controller),
+            const Center(
+              child: DFUMillenniumFalcon(),
+            ),
+          ],
         );
       },
     );

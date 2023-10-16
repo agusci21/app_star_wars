@@ -64,6 +64,7 @@ class CharacterListBloc extends Bloc<CharacterListEvent, CharacterListState> {
     on<Search>(
       (event, emit) async {
         _page = 1;
+        emit(Loading());
         final input =
             GetCharactersInput(page: _page, searchField: event.searchField);
         final output = await _repository.getCharacters(input);
