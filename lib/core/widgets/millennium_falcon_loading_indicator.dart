@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/atributes_list/presentation/atributes_list_component.dart';
 import 'package:flutter/material.dart';
 
 class MillenniumFalconLoadingIndicator extends StatefulWidget {
