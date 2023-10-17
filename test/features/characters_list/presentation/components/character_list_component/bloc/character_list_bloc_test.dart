@@ -71,7 +71,7 @@ void main() {
         ],
       );
       blocTest<CharacterListBloc, CharacterListState>(
-        'will test a successfull petition and shouldAnswer [Loading, Loaded, LoadingMore, Loaded]',
+        'will test a successfull petition and shouldAnswer [Loading, Loaded, Loaded, Loaded]',
         build: () {
           final output =
               GetCharactersOutput.withData(hasNextPage: true, characters: [
@@ -111,6 +111,7 @@ void main() {
         },
         expect: () => [
           isA<Loading>(),
+          isA<Loaded>(),
           isA<Loaded>(),
           isA<Loaded>(),
         ],
