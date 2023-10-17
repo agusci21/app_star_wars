@@ -20,7 +20,7 @@ void main() {
         'will test a successful petition and shouldAnswer [Loaded]',
         build: () {
       final output = GetPlanetByIdOutput.withData(
-        Planet(
+        const Planet(
           name: 'test',
           orbitalPeriod: 'test',
           population: 'test',

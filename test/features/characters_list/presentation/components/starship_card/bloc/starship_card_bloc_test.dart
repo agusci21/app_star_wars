@@ -20,7 +20,7 @@ void main() {
         'will test a successful petition and shouldAnswer [Loaded]',
         build: () {
       final output = GetStarshipByIdOutput.withData(
-        Starship(
+        const Starship(
           costInCredits: 'test',
           manufacturer: 'test',
           model: 'test',

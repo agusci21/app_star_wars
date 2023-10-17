@@ -1,21 +1,16 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Vehicle{
-  final String name;
-  final String manufacturer;
-  final String costInCredits;
-  final String vehicleClass;
+part 'vehicle.freezed.dart';
+part 'vehicle.g.dart';
 
-  const Vehicle({
-    required this.name,
-    required this.manufacturer,
-    required this.costInCredits,
-    required this.vehicleClass,
-  });
+@freezed
+abstract class Vehicle with _$Vehicle {
+  const factory Vehicle({
+    @JsonKey(name: 'name') required String name,
+    @JsonKey(name: 'manufacturer') required String manufacturer,
+    @JsonKey(name: 'cost_in_credits') required String costInCredits,
+    @JsonKey(name: 'vehicle_class') required String vehicleClass,
+  }) = _Vehicle;
 
-  factory Vehicle.fromJson(json) => Vehicle(
-    name: json['name'],
-    manufacturer: json['manufacturer'],
-    costInCredits: json['cost_in_credits'],
-    vehicleClass: json['vehicle_class'],
-  );
+  factory Vehicle.fromJson(Map<String, dynamic> json) => _$VehicleFromJson(json);
 }
