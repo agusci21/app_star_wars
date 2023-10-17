@@ -1,20 +1,24 @@
 import 'dart:math';
 
+import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/atributes_list/presentation/atributes_list_component.dart';
 import 'package:flutter/material.dart';
 
-class DFUMillenniumFalcon extends StatefulWidget {
-  const DFUMillenniumFalcon({super.key});
+class MillenniumFalconLoadingIndicator extends StatefulWidget {
+  const MillenniumFalconLoadingIndicator({super.key});
 
   @override
-  State<DFUMillenniumFalcon> createState() => _DFUMillenniumFalconState();
+  State<MillenniumFalconLoadingIndicator> createState() =>
+      _MillenniumFalconLoadingIndicatorState();
 }
 
-class _DFUMillenniumFalconState extends State<DFUMillenniumFalcon>
+class _MillenniumFalconLoadingIndicatorState
+    extends State<MillenniumFalconLoadingIndicator>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
   void initState() {
+    
     super.initState();
     _controller = AnimationController(
       duration: const Duration(milliseconds: 600),

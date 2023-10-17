@@ -26,7 +26,6 @@ The Star Wars Character Reporter is an application that allows users to explore 
    ```bash
    flutter pub get
 3. Generate autogenerate code:
-
    ```bash
    dart run build_runner build -d
 

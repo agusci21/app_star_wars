@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:desafio_flutter_urbetrack/application/localizations/locales.dart';
 import 'package:desafio_flutter_urbetrack/infrastructure/environments_confi.dart';
 import 'package:flutter/material.dart';

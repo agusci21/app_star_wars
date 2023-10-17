@@ -1,7 +1,7 @@
 import 'package:desafio_flutter_urbetrack/application/localizations/i18n.dart';
 import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
 import 'package:desafio_flutter_urbetrack/core/extensions/string_helpers.dart';
-import 'package:desafio_flutter_urbetrack/core/widgets/dfu_millennium_falcon_loading_indicator.dart';
+import 'package:desafio_flutter_urbetrack/core/widgets/millennium_falcon_loading_indicator.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/domain/inputs_outputs/report_character/report_character_input.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/report_button/bloc/report_button_bloc.dart';
 import 'package:flutter/material.dart';
@@ -47,14 +47,16 @@ class ReportButton extends StatelessWidget {
       builder: (context, state) {
         if (state is Loading) {
           return const Center(
-            child: DFUMillenniumFalcon(),
+            child: MillenniumFalconLoadingIndicator(),
           );
         }
+        
         return Center(
           child: ElevatedButton(
             onPressed: () {
               final input = ReportCharacterInput(
-                characterId: int.parse(character.url.getIdFromUrl('people') ?? ''),
+                characterId:
+                    int.parse(character.url.getIdFromUrl('people') ?? ''),
                 reportedDate: DateTime.now(),
                 characterName: character.name,
               );

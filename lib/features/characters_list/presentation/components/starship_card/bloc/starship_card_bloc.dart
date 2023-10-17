@@ -31,8 +31,9 @@ class StarshipCardBloc extends Bloc<StarshipCardEvent, StarshipCardState> {
         if (state is Loaded) {
           emit(
             Loaded(
-                starship: (state as Loaded).starship,
-                isExpanded: !(state as Loaded).isExpanded),
+              starship: (state as Loaded).starship,
+              isExpanded: !(state as Loaded).isExpanded,
+            ),
           );
         }
       },

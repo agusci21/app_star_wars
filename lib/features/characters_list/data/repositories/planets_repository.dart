@@ -17,7 +17,9 @@ class PlanetsRepository implements IPlanetsRepository {
     try {
       final response = await _httpHelper.get(url);
       if (response.isOk) {
-        return GetPlanetByIdOutput.withData(Planet.fromJson(response.data));
+        return GetPlanetByIdOutput.withData(
+          Planet.fromJson(response.data),
+        );
       }
       return GetPlanetByIdOutput.withError('planet_not_founded');
     } catch (_) {

@@ -1,4 +1,4 @@
-import 'package:desafio_flutter_urbetrack/core/widgets/dfu_millennium_falcon_loading_indicator.dart';
+import 'package:desafio_flutter_urbetrack/core/widgets/millennium_falcon_loading_indicator.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/character_list_component/bloc/character_list_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/character_presentation_card/presentation/character_presentation_card.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/search_bar/presentation/search_bar.dart';
@@ -21,7 +21,9 @@ class CharacterList extends StatelessWidget {
               CustomSearchBar(
                 controller: controller,
                 onFieldSubmitted: (value) {
-                  bloc.add(Search(searchField: value));
+                  bloc.add(
+                    Search(searchField: value),
+                  );
                 },
               ),
               Expanded(
@@ -37,7 +39,7 @@ class CharacterList extends StatelessWidget {
                     }
                     if (state.isLoadingMore && index == lenght - 1) {
                       return const Center(
-                        child: DFUMillenniumFalcon(),
+                        child: MillenniumFalconLoadingIndicator(),
                       );
                     }
                     return CharacterPresentationCard(
@@ -54,7 +56,7 @@ class CharacterList extends StatelessWidget {
             CustomSearchBar(
                 onFieldSubmitted: (value) {}, controller: controller),
             const Center(
-              child: DFUMillenniumFalcon(),
+              child: MillenniumFalconLoadingIndicator(),
             ),
           ],
         );

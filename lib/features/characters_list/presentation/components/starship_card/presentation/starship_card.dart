@@ -1,7 +1,7 @@
 import 'package:desafio_flutter_urbetrack/application/localizations/i18n.dart';
 import 'package:desafio_flutter_urbetrack/core/extensions/string_helpers.dart';
-import 'package:desafio_flutter_urbetrack/core/widgets/dfu_expansion_panel.dart';
-import 'package:desafio_flutter_urbetrack/core/widgets/dfu_millennium_falcon_loading_indicator.dart';
+import 'package:desafio_flutter_urbetrack/core/widgets/custom_expansion_panel.dart';
+import 'package:desafio_flutter_urbetrack/core/widgets/millennium_falcon_loading_indicator.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/starship_card/bloc/starship_card_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +25,7 @@ class StarshipCard extends StatelessWidget {
         ),
       builder: (context, state) {
         if (state is Loaded) {
-          return DFUExpansionPanel(
+          return CustomExpansionPanel(
               expansionCallback: (panelIndex, isExpanded) {
                 bloc.add(PanelPressed());
               },
@@ -51,7 +51,7 @@ class StarshipCard extends StatelessWidget {
               ]);
         }
         return const Center(
-          child: DFUMillenniumFalcon(),
+          child: MillenniumFalconLoadingIndicator(),
         );
       },
     );

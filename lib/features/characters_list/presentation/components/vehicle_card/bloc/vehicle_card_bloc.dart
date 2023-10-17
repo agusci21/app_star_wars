@@ -14,16 +14,23 @@ class VehicleCardBloc extends Bloc<VehicleCardEvent, VehicleCardState> {
     on<LoadVehicle>((event, emit) async {
       final input = GetVehicleByIdInput(id: event.id);
       final output = await _repository.getVehicleById(input);
-      if(!output.hasError){
-        emit(Loaded(vehicle: output.vehicle!, isExpanded: false));
+      if (!output.hasError) {
+        emit(
+          Loaded(vehicle: output.vehicle!, isExpanded: false),
+        );
         return;
       }
       emit(Failed(error: output.error!));
     });
 
-    on<PannelPressed>((event, emit)  {
-      if(state is Loaded){
-        emit(Loaded(vehicle: (state as Loaded).vehicle, isExpanded: !(state as Loaded).isExpanded));
+    on<PannelPressed>((event, emit) {
+      if (state is Loaded) {
+        final previousState = state as Loaded;
+        emit(
+          Loaded(
+              vehicle: previousState.vehicle,
+              isExpanded: !previousState.isExpanded),
+        );
       }
     });
   }

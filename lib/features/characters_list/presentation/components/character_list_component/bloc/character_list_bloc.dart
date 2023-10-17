@@ -21,10 +21,12 @@ class CharacterListBloc extends Bloc<CharacterListEvent, CharacterListState> {
         emit(Failed());
         return;
       }
-      emit(Loaded(
-          characters: output.characters!,
-          hasNextPage: output.hasNextPage!,
-          isLoadingMore: false));
+      emit(
+        Loaded(
+            characters: output.characters!,
+            hasNextPage: output.hasNextPage!,
+            isLoadingMore: false),
+      );
       return;
     });
 

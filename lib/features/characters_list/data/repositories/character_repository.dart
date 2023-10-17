@@ -23,8 +23,10 @@ class CharacterRepository implements ICharacterRepository {
       final response = await _httpHelper.get(url);
       if (response.isOk) {
         final rawCharacters = (response.data['results']) as List;
-        final List<Character> characters = List.generate(rawCharacters.length,
-            (index) => Character.fromJson(rawCharacters[index]));
+        final List<Character> characters = List.generate(
+          rawCharacters.length,
+          (index) => Character.fromJson(rawCharacters[index]),
+        );
         return GetCharactersOutput.withData(
             characters: characters, hasNextPage: response.data['next'] != null);
       }

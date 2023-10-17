@@ -18,7 +18,9 @@ class VehicleRepository implements IVehicleRepository {
     try {
       final response = await _httpHelper.get(url);
       if (response.isOk) {
-        return GetVehicleByIdOutput.withData(Vehicle.fromJson(response.data));
+        return GetVehicleByIdOutput.withData(
+          Vehicle.fromJson(response.data),
+        );
       }
       return GetVehicleByIdOutput.withError('vehicle_not_founded');
     } catch (_) {

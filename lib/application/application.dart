@@ -13,23 +13,23 @@ class Application extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
         elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.resolveWith(
-                (_) => Colors.pink.shade900,
-              ),
-              shape: MaterialStateProperty.resolveWith(
-                (_) => RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100),
-                ),
-              ),
-            )
-        ),
+            style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.resolveWith(
+            (_) => Colors.pink.shade900,
+          ),
+          shape: MaterialStateProperty.resolveWith(
+            (_) => RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(100),
+            ),
+          ),
+        )),
         primaryColor: Colors.pink.shade900,
         splashColor: Colors.pink.shade900,
         snackBarTheme: SnackBarThemeData(
           backgroundColor: Colors.pink.shade900,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
           contentTextStyle: const TextStyle(color: Colors.white, fontSize: 16),
           behavior: SnackBarBehavior.floating,
         ),

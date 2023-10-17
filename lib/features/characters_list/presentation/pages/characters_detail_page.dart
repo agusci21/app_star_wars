@@ -15,7 +15,9 @@ class CharacterDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(I18n.of(context).translate('character_details')),
+        title: Text(
+          I18n.of(context).translate('character_details'),
+        ),
       ),
       body: AtributeList(character: character),
     );

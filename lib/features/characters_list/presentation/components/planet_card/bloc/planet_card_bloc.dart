@@ -19,7 +19,9 @@ class PlanetCardBloc extends Bloc<PlanetCardEvent, PlanetCardState> {
         emit(Failed());
         return;
       }
-      emit(Loaded(planet: output.planet!, isExpanded: false));
+      emit(
+        Loaded(planet: output.planet!, isExpanded: false),
+      );
     });
 
     on<PanelPressed>(

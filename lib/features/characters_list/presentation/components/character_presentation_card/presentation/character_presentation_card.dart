@@ -29,8 +29,12 @@ class _CharacterPresentationCardState extends State<CharacterPresentationCard>
       vsync: this,
       duration: widget.duration,
     );
-    animation = Tween<double>(begin: 150, end: 0)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
+    animation = Tween<double>(begin: 150, end: 0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeIn,
+      ),
+    );
     _controller.forward();
   }
 

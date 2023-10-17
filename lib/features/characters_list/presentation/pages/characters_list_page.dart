@@ -11,15 +11,17 @@ class CharacterListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(I18n.of(context).translate('star_wars_characters')),
-          leading: IconButton(
-            onPressed: () => CharacterListModule.navigateToMenu(context),
-            icon: const Icon(Icons.settings),
-          ),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(I18n.of(context).translate('star_wars_characters')),
+        leading: IconButton(
+          onPressed: () => CharacterListModule.navigateToMenu(context),
+          icon: const Icon(Icons.settings),
         ),
-        body: CharacterList(
-            bloc: IocManager.instance.resolve<CharacterListBloc>()));
+      ),
+      body: CharacterList(
+        bloc: IocManager.instance.resolve<CharacterListBloc>(),
+      ),
+    );
   }
 }

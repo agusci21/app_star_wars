@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DFUExpansionPanel extends StatelessWidget {
+class CustomExpansionPanel extends StatelessWidget {
   final void Function(int, bool) expansionCallback;
   final String title;
   final List<Widget> content;
   final bool isExpanded;
-  const DFUExpansionPanel({
+  const CustomExpansionPanel({
     required this.expansionCallback,
     required this.isExpanded,
     required this.title,

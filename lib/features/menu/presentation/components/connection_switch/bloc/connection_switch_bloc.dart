@@ -5,12 +5,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'connection_switch_event.dart';
 part 'connection_switch_state.dart';
 
-class ConnectionSwitchBloc extends Bloc<ConnectionSwitchEvent, ConnectionSwitchState> {
-      final IConnectionRepository _repository;
-  ConnectionSwitchBloc({required IConnectionRepository repository}) : _repository = repository, super(Initial()) {
+class ConnectionSwitchBloc
+    extends Bloc<ConnectionSwitchEvent, ConnectionSwitchState> {
+  final IConnectionRepository _repository;
+  ConnectionSwitchBloc({required IConnectionRepository repository})
+      : _repository = repository,
+        super(Initial()) {
     on<LoadConnection>((event, emit) async {
       final output = await _repository.getConnection();
-      emit(Loaded(isEnabled: output.isConnected));
+      emit(
+        Loaded(isEnabled: output.isConnected),
+      );
     });
 
     on<ToggleConnection>((event, emit) async {
