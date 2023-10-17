@@ -24,7 +24,6 @@ class ReportButton extends StatelessWidget {
         if (state is CharacterReported) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              backgroundColor: Colors.pink.shade900,
               content: Text(
                 I18n.of(context).translate('character_reported') +
                     character.name,
@@ -53,16 +52,6 @@ class ReportButton extends StatelessWidget {
         }
         return Center(
           child: ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.resolveWith(
-                (_) => Colors.purple.shade900,
-              ),
-              shape: MaterialStateProperty.resolveWith(
-                (_) => RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100),
-                ),
-              ),
-            ),
             onPressed: () {
               final input = ReportCharacterInput(
                 characterId: int.parse(character.url.getIdFromUrl('people') ?? ''),

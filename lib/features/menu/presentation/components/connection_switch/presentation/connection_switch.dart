@@ -52,6 +52,6 @@ class ConnectionSwitch extends StatelessWidget {
     } else if (number < 0.8) {
       return Colors.green;
     }
-    return Colors.pink;
+    return Colors.pink.shade900;
   }
 }

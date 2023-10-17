@@ -26,6 +26,7 @@ class CharacterList extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.all(10),
                   itemCount: state.characters.length,
                   itemBuilder: (context, index) {

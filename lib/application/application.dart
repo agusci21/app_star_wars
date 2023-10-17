@@ -12,8 +12,22 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-        splashColor: const Color(0xffffe919),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.resolveWith(
+                (_) => Colors.pink.shade900,
+              ),
+              shape: MaterialStateProperty.resolveWith(
+                (_) => RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              ),
+            )
+        ),
+        primaryColor: Colors.pink.shade900,
+        splashColor: Colors.pink.shade900,
         snackBarTheme: SnackBarThemeData(
+          backgroundColor: Colors.pink.shade900,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           contentTextStyle: const TextStyle(color: Colors.white, fontSize: 16),

@@ -20,11 +20,13 @@ class CustomSearchBar extends StatelessWidget {
       ),
       width: double.infinity,
       child: TextFormField(
+        cursorColor: Colors.pink.shade900,
         textCapitalization: TextCapitalization.words,
         onFieldSubmitted: onFieldSubmitted,
         controller: controller,
         decoration: InputDecoration.collapsed(
-            hintText: I18n.of(context).translate('search')),
+          hintText: I18n.of(context).translate('search'),
+        ),
       ),
     );
   }

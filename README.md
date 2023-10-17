@@ -1,16 +1,34 @@
-# desafio_flutter_urbetrack
+# Star Wars Character Reporter
 
-A new Flutter project.
+## Overview
 
-## Getting Started
+The Star Wars Character Reporter is an application that allows users to explore and report Star Wars characters. Users can activate or deactivate the connection to report characters and view them in a list.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- **Activate/Deactivate Connection:** Toggle the connection to enable or disable reporting of Star Wars characters.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Character List:** View a list of Star Wars characters
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Search Functionality:** Search for specific characters within the list.
+
+- **Report characters:** See character details and report it if connection is active 
+
+## Installation
+
+1. Clone this repository to your local machine:
+
+   ```bash
+   git clone https://github.com/agusci21/app_star_wars.git
+
+2. Get dependencies:
+
+   ```bash
+   flutter pub get
+3. Generate autogenerate code:
+
+   ```bash
+   dart run build_runner build -d
+
+**May the Force be with you!**
+
