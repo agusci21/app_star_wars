@@ -1,5 +1,6 @@
 import 'package:desafio_flutter_urbetrack/application/localizations/i18n.dart';
 import 'package:desafio_flutter_urbetrack/core/entities/character.dart';
+import 'package:desafio_flutter_urbetrack/core/extensions/string_helpers.dart';
 import 'package:desafio_flutter_urbetrack/core/helpers/gender_helper.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/planet_card/bloc/planet_card_bloc.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/planet_card/presentation/planet_card.dart';
@@ -45,7 +46,7 @@ class AtributeList extends StatelessWidget {
               secondTranslationKey: 'centimeters',
             ),
             PlanetCard(
-                planetId: character.homeworldId,
+                planetId: character.homeworld.getIdFromUrl('planets') ?? '',
                 bloc: IocManager.instance.resolve<PlanetCardBloc>()),
             if (character.starships.isNotEmpty)
               StarshipsList(starshipsIds: character.starships),
