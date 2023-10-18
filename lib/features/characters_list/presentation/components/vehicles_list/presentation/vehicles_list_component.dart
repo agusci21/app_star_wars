@@ -23,7 +23,7 @@ class VehiclesList extends StatelessWidget {
         ),
         for (final id in vehiclesIds)
           VehicleCard(
-            vehicleId: id,
+            vehicleUrl: id,
             bloc: IocManager.instance.resolve<VehicleCardBloc>(),
           ),
       ],

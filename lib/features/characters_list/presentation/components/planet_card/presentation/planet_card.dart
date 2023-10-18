@@ -1,4 +1,5 @@
 import 'package:desafio_flutter_urbetrack/application/localizations/i18n.dart';
+import 'package:desafio_flutter_urbetrack/core/extensions/string_helpers.dart';
 import 'package:desafio_flutter_urbetrack/core/widgets/custom_expansion_panel.dart';
 import 'package:desafio_flutter_urbetrack/core/widgets/millennium_falcon_loading_indicator.dart';
 import 'package:desafio_flutter_urbetrack/features/characters_list/presentation/components/planet_card/bloc/planet_card_bloc.dart';
@@ -6,16 +7,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PlanetCard extends StatelessWidget {
-  final String planetId;
+  final String planetUrl;
   final PlanetCardBloc bloc;
   const PlanetCard({
-    required this.planetId,
+    required this.planetUrl,
     required this.bloc,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final String? id = planetUrl.getIdFromUrl('planets');
+    if(id == null){
+      return const SizedBox();
+    }
     const expansionPanelTextStyle = TextStyle(fontSize: 17);
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -26,7 +31,7 @@ class PlanetCard extends StatelessWidget {
           style: const TextStyle(fontSize: 25),
         ),
         BlocBuilder<PlanetCardBloc, PlanetCardState>(
-          bloc: bloc..add(LoadPlanet(id: planetId)),
+          bloc: bloc..add(LoadPlanet(id: id)),
           builder: (context, state) {
             if (state is Loaded) {
               return CustomExpansionPanel(

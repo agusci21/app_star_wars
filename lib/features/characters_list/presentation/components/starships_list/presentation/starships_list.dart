@@ -23,7 +23,7 @@ class StarshipsList extends StatelessWidget {
         ),
         for (final id in starshipsIds)
           StarshipCard(
-            starshipId: id,
+            starshipUrl: id,
             bloc: IocManager.instance.resolve<StarshipCardBloc>(),
           )
       ],

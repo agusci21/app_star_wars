@@ -7,21 +7,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class VehicleCard extends StatelessWidget {
-  final String vehicleId;
+  final String vehicleUrl;
   final VehicleCardBloc bloc;
   const VehicleCard({
-    required this.vehicleId,
+    required this.vehicleUrl,
     required this.bloc,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final String? id = vehicleUrl.getIdFromUrl('vehicles');
     const expansionPanelTextStyle = TextStyle(fontSize: 17);
+
+    if (id == null) {
+      return const SizedBox();
+    }
     return BlocBuilder<VehicleCardBloc, VehicleCardState>(
       bloc: bloc
         ..add(
-          LoadVehicle(id: vehicleId.getIdFromUrl('vehicles') ?? ''),
+          LoadVehicle(id: id),
         ),
       builder: (context, state) {
         if (state is Loaded) {

@@ -7,21 +7,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StarshipCard extends StatelessWidget {
-  final String starshipId;
+  final String starshipUrl;
   final StarshipCardBloc bloc;
   const StarshipCard({
-    required this.starshipId,
+    required this.starshipUrl,
     required this.bloc,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final String? id = starshipUrl.getIdFromUrl('starships');
     const expansionPanelTextStyle = TextStyle(fontSize: 17);
+    if(id == null){
+      return const SizedBox();
+    }
     return BlocBuilder<StarshipCardBloc, StarshipCardState>(
       bloc: bloc
         ..add(
-          LoadStarship(id: starshipId.getIdFromUrl('starships') ?? ''),
+          LoadStarship(id: id),
         ),
       builder: (context, state) {
         if (state is Loaded) {
