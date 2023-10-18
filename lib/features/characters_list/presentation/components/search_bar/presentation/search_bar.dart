@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final TextEditingController controller;
-  final void Function(String value) onFieldSubmitted;
+  final void Function(String value) onSearch;
   const CustomSearchBar({
-    required this.onFieldSubmitted,
+    required this.onSearch,
     required this.controller,
     super.key,
   });
@@ -22,10 +22,15 @@ class CustomSearchBar extends StatelessWidget {
       child: TextFormField(
         cursorColor: Colors.pink.shade900,
         textCapitalization: TextCapitalization.words,
-        onFieldSubmitted: onFieldSubmitted,
+        onFieldSubmitted: onSearch,
         onChanged: (value) {
           if (value.trim().length > 2) {
-            onFieldSubmitted(value);
+            onSearch(value);
+            return;
+          }
+          if(value.isEmpty){
+            onSearch(value);
+            return;
           }
         },
         controller: controller,

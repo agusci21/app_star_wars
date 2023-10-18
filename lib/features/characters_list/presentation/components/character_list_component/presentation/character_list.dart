@@ -20,7 +20,7 @@ class CharacterList extends StatelessWidget {
             children: [
               CustomSearchBar(
                 controller: controller,
-                onFieldSubmitted: (value) {
+                onSearch: (value) {
                   bloc.add(
                     Search(searchField: value),
                   );
@@ -53,8 +53,7 @@ class CharacterList extends StatelessWidget {
         }
         return Column(
           children: [
-            CustomSearchBar(
-                onFieldSubmitted: (value) {}, controller: controller),
+            CustomSearchBar(onSearch: (value) {}, controller: controller),
             const Center(
               child: MillenniumFalconLoadingIndicator(),
             ),
