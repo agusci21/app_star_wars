@@ -27,9 +27,10 @@
     "surface_water" : "Superficie cubierta de agua",
     "menu": "Menú",
     "activate_connection"    : "Activa la conección",
-    "desactivate_connection" : "Desactiva la conneción",
+    "disable_connection" : "Desactiva la conneción",
     "no_connection_error" : "La conección esta desactivada",
     "generic_error_message": "Ha ocurrido un error, intentalo nuevamente",
     "character_reported" : "Se ha reportado a ",
-    "search": "Buscar..."
+    "search": "Buscar...",
+    "report": "Reportar"
 }

@@ -27,7 +27,7 @@ class ConnectionSwitch extends StatelessWidget {
               title: Text(
                 I18n.of(context).translate(
                   state.isEnabled
-                      ? 'desactivate_connection'
+                      ? 'disable_connection'
                       : 'activate_connection',
                 ),
                 style: TextStyle(fontSize: 24),

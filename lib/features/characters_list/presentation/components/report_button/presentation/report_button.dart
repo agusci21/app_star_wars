@@ -66,9 +66,9 @@ class ReportButton extends StatelessWidget {
               alignment: Alignment.center,
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-              child: const Text(
-                'Reportar',
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.w400),
+              child:  Text(
+                I18n.of(context).translate('report'),
+                style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w400),
               ),
             ),
           ),

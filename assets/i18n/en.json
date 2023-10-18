@@ -27,9 +27,10 @@
     "surface_water": "Surface Water Coverage",
     "menu": "Menu",
     "activate_connection": "Activate Connection",
-    "deactivate_connection": "Deactivate Connection",
+    "disable_connection": "Deactivate Connection",
     "no_connection_error": "Connection is Deactivated",
     "generic_error_message": "An error has occurred, please try again",
-    "character_reported": "Reported: ",
-    "search": "Search..."
+    "character_reported": "You have reported ",
+    "search": "Search...",
+    "report": "Report"
     }
