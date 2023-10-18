@@ -50,13 +50,17 @@ class ReportButton extends StatelessWidget {
             child: MillenniumFalconLoadingIndicator(),
           );
         }
-        
         return Center(
           child: ElevatedButton(
             onPressed: () {
+              final int? id =
+                  int.tryParse(character.url.getIdFromUrl('people') ?? '');
+              if (id == null) {
+                return;
+              }
+
               final input = ReportCharacterInput(
-                characterId:
-                    int.parse(character.url.getIdFromUrl('people') ?? ''),
+                characterId: id,
                 reportedDate: DateTime.now(),
                 characterName: character.name,
               );
@@ -66,9 +70,10 @@ class ReportButton extends StatelessWidget {
               alignment: Alignment.center,
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-              child:  Text(
+              child: Text(
                 I18n.of(context).translate('report'),
-                style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w400),
+                style:
+                    const TextStyle(fontSize: 26, fontWeight: FontWeight.w400),
               ),
             ),
           ),
